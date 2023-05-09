@@ -1,16 +1,118 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
-  <body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<body>
+    <% if user_signed_in? %>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="text-white nav-link" href="/">Bookers <span class="sr-only">(current)</span></a>
+      </li>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to user_path(current_user), class:"text-white bg-dark" do %>
+          <i class="fas fa-home"></i> Home
+          <% end %>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to users_path, class:"text-white bg-dark" do %>
+          <i class="fas fa-users"></i> Users
+          <% end %>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to books_path, class:"text-white bg-dark" do %>
+          <i class="fas fa-book-open"></i> Books
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to destroy_user_session_path, method: :delete, class:"text-white bg-dark" do %>
+          <i class="fas fa-sign-out-alt"></i> Log out
+          <% end %>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <% else %>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <a class="text-white nav-link" href="/">Bookers <span class="sr-only">(current)</span></a>
+      </li>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+        <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to root_path, class:"text-white bg-dark" do %>
+          <i class="fas fa-home"></i> Home
+          <% end %>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to about_path, class:"text-white bg-dark" do %>
+          <i class="fas fa-link"></i> About
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to new_user_registration_path, class:"text-white bg-dark" do %>
+          <i class="fas fa-user-plus"></i> sigh up
+          <% end %>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <%= link_to new_user_session_path, class:"text-white bg-dark" do %>
+          <i class="fas fa-sign-in-alt"></i> Log in
+          <% end %>
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <% end %>
+</header>
+<%= flash[:notice] %>
     <%= yield %>
-  </body>
+</body>
+<footer>
+ <p class="text-center"> CopyRight Infratop.inc</p>
+</footer>
 </html>

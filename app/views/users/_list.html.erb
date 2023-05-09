@@ -1,0 +1,27 @@
+
+  <h2>User info</h2>
+  <thead>
+    <%= image_tag @user.get_profile_image(100,100), alt: "no_image.jpg" %>
+  </thead>
+  
+<table class="table table-hover">
+  <tbody>
+    <tr>
+    <th>Name</th>
+    <th><%= @user.name %></th>
+    </tr>
+    <tr>
+    <th>Introduction</th>
+    <th><%= @user.introduction %></th>
+    </tr>
+    
+  
+  </tbody>
+  </table>
+  <p class="text-center"><%= link_to edit_user_path(current_user) do %>
+  <i class="fas fa-user-cog text-dark"></i>
+<% end %>
+</p>
+  
+  
+  

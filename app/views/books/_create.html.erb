@@ -1,0 +1,11 @@
+
+  <%= form_with model: Book.create do |f| %>
+  <h2>New book</h2>
+  <h4>Title</h4>
+  <%= f.text_field :title %>
+  
+  <h4>Opinion</h4>
+  <%= f.text_area :body %>
+  <P><%= f.submit 'Create Book', class: "btn btn-success"%></P>
+<% end %>
+

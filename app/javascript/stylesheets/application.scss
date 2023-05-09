@@ -1,0 +1,23 @@
+@use '~bootstrap/scss/bootstrap';
+@use '~@fortawesome/fontawesome-free/scss/fontawesome';
+ 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+ 
+.link {
+    text-decoration: none;
+    color: white ; 
+}
+
+.btn btn-info btn-block {
+    margin: 0 0 16px;
+    parding: 4px 8px;
+}
+
+main {
+  margin: 0 auto;
+  width: 880px;
+}
