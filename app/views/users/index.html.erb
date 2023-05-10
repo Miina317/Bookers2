@@ -1,41 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-     <h2>User info</h2>
-  <thead>
-    <%= image_tag @user.get_profile_image(100,100), alt: "no_image.jpg" %>
-  </thead>
-  
-<table class="table table-hover">
-  <tbody>
-    <tr>
-    <th>Name</th>
-    <th><%= @user.name %></th>
-    </tr>
-    <tr>
-    <th>Introduction</th>
-    <th><%= @user.introduction %></th>
-    </tr>
-   
-  </tbody>
-  </table>
-  <% if @user_id == current_user.id %>
-  <p class="text-center"><%= link_to edit_user_path(current_user) do %>
-  <i class="fas fa-user-cog text-dark"></i>
-  <% end %>
-  <% else %>
-  <p class="text-center"><%= link_to books_path do %>
-  <i class="fas fa-user-cog text-dark"></i>
-<% end %>
-<% end %>
-</p>
-  
-  
-  
-  
+    <div class="col-md-3">
+    <h2>User info</h2>
+      <thead>
+        <%= image_tag @user.get_profile_image(100,100), alt: "no_image.jpg" %>
+      </thead>
+      <table class="table table-hover">
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th><%= @user.name %></th>
+          </tr>
+          <tr>
+            <th>Introduction</th>
+            <th><%= @user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <p class="text-center">
+        <%= link_to edit_user_path(@user) do %>
+          <i class="fas fa-user-cog text-dark"></i>
+        <% end %>
+      </p>
      <%= render 'books/create', book: @book %>
     </div>
-<div class="col-md-8">
+    <div class="col-md-8 offset-md-1">
+ 
 <h2>Users</h2>
 <table class="table table-hover">
 

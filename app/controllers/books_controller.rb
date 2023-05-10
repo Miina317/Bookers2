@@ -6,31 +6,30 @@ class BooksController < ApplicationController
       flash[:notice]="You have creatad book successfully."
       redirect_to book_path(@book.id)
     else
+      @user = @book.user
       @books = Book.all
-      @user = current_user
       render :index
     end
   end
 
   def index
+    @users = User.all
     @user = current_user
     @book = Book.new
     @books = Book.all
-    @profile_image = @user.profile_image
+    
   end
 
   def show
     @book = Book.find(params[:id])
     @user = @book.user
-    @post_comment = PostComment.new
   end
 
   def edit
-    @book = Book.find(params[:id])
-    if @book.user == current_user
-      render :index
-    else
-        redirect_to books_path
+  @book = Book.find(params[:id])
+  @user = current_user
+  unless @user.id == current_user.id
+      redirect_to books_path
     end
   end
 
@@ -43,18 +42,21 @@ class BooksController < ApplicationController
       render :edit
     end
   end
-
-  def destroy
-     @book = Book.find(params[:id])
+  
+def destroy
+  @book = Book.find(params[:id])
+  if @book.user_id == current_user.id
     if @book.destroy
       flash[:notice]="Book was successfully destroyed."
       redirect_to books_path
     end
+  else
+    redirect_to books_path
   end
+end
 
     private
     def book_params
       params.require(:book).permit(:title, :body, :profile_image, :name)
     end
-
-  end
+end

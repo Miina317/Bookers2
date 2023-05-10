@@ -1,16 +1,14 @@
 <main>
-
-<h1>welcome to <i class="fas fa-book"></i>Bookers!!</h1>
-<p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
-<p>you can share and exchange your orinions,inpressions,andemotions</p>
-<p>about various books!</p>
-
-<div class="btn-wrapper col-10 mx-auto">
-        <div class="row">
-          <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="/users/sign_in">Log in</a>
-        </div>
-        <div class="row">
-          <a class="btn btn-success btn-sm btn-block sign_up" href="/users/sign_up">Sign up</a>
-        </div>
-      </div>
+  <h1>welcome to <i class="fas fa-book"></i>Bookers!!</h1>
+  <p>In <i class="fas fa-book"></i><strong>Bookers</strong>,</p>
+  <p>you can share and exchange your orinions,inpressions,andemotions</p>
+  <p>about various books!</p>
+  <div class="btn-wrapper col-10 mx-auto">
+    <div class="row">
+      <a class="btn btn-info btn-sm btn-block mb-3 sign_in" href="<%= new_user_session_path %>">Log in</a>
+    </div>
+    <div class="row">
+      <a class="btn btn-success btn-sm btn-block sign_up" href="<%= new_user_registration_path %>">Sign up</a>
+    </div>
+  </div>
 </main>

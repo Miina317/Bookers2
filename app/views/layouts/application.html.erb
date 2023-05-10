@@ -19,89 +19,82 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <body>
     <% if user_signed_in? %>
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="text-white nav-link" href="/">Bookers <span class="sr-only">(current)</span></a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <%= link_to root_path, class: "text-white nav-link" do %>
+  Bookers <span class="sr-only">(current)</span>
+<% end %>
       </li>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to user_path(current_user), class:"text-white bg-dark" do %>
-          <i class="fas fa-home"></i> Home
-          <% end %>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to users_path, class:"text-white bg-dark" do %>
-          <i class="fas fa-users"></i> Users
-          <% end %>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to books_path, class:"text-white bg-dark" do %>
-          <i class="fas fa-book-open"></i> Books
-          <% end %>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to destroy_user_session_path, method: :delete, class:"text-white bg-dark" do %>
-          <i class="fas fa-sign-out-alt"></i> Log out
-          <% end %>
-        </a>
-      </li>
-    </ul>
-  </div>
-</nav>
-    <% else %>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-   <a class="text-white nav-link" href="/">Bookers <span class="sr-only">(current)</span></a>
-      </li>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
         <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to root_path, class:"text-white bg-dark" do %>
-          <i class="fas fa-home"></i> Home
-          <% end %>
-        </a>
-      </li>
+          <a class="nav-link" href="<%= user_path(current_user) %>" class="text-white bg-dark">
+            <i class="fas fa-home"></i> Home
+          </a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to about_path, class:"text-white bg-dark" do %>
-          <i class="fas fa-link"></i> About
-          <% end %>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to new_user_registration_path, class:"text-white bg-dark" do %>
-          <i class="fas fa-user-plus"></i> sigh up
-          <% end %>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link">
-          <%= link_to new_user_session_path, class:"text-white bg-dark" do %>
-          <i class="fas fa-sign-in-alt"></i> Log in
-          <% end %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= users_path %>" class="text-white bg-dark">
+            <i class="fas fa-users"></i> Users
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= books_path %>" class="text-white bg-dark">
+            <i class="fas fa-book-open"></i> Books
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="delete" class="text-white bg-dark">
+            <i class="fas fa-sign-out-alt"></i> Log out
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+<% else %>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <%= link_to root_path, class: "text-white nav-link" do %>
+  Bookers <span class="sr-only"></span>
+<% end %>
+
+    </li>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="<%= root_path %>" class="text-white bg-dark">
+            <i class="fas fa-home"></i> Home
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= about_path %>" class="text-white bg-dark">
+            <i class="fas fa-link"></i> About
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>" class="text-white bg-dark">
+            <i class="fas fa-user-plus"></i> Sign up
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>" class="text-white bg-dark">
+            <i class="fas fa-sign-in-alt"></i> Log in
+         
+
         </a>
       </li>
     </ul>
